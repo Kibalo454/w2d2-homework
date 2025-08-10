@@ -1,0 +1,118 @@
+/* ========= Base ========= */
+html, body { height: 100%; }
+
+/* ========= Hero ========= */
+.hero {
+  width: 100%;
+  min-height: 400px;
+  background: lightgrey url(images/cliff_ocean.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+/* ========= Overlay Navbar (screenshot look) ========= */
+.nav-over-hero {
+  position: absolute;
+  top: 24px;           /* pushes slab down a bit into the hero */
+  left: 0;
+  right: 0;
+  background: transparent;
+  z-index: 20;
+}
+.nav-slab {
+  background: rgba(255,255,255,.9);
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+}
+
+/* Logo sizing */
+.navbar-brand img {
+  max-height: 56px;
+  height: auto;
+  width: auto;
+}
+
+/* Tab-style nav links and active state (green) */
+.nav-tab {
+  background: #f2f2f2;
+  color: #666;
+  text-transform: uppercase;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  border-radius: 2px;
+  padding: .5rem .9rem;
+  margin-left: .5rem;
+}
+.nav-item.active .nav-tab,
+.nav-tab:hover {
+  background: #9ed034;
+  color: #fff;
+}
+
+/* Toggler tweaks */
+.navbar-light .navbar-toggler { border-color: rgba(0,0,0,.1); }
+.navbar-toggler:focus { outline: none; box-shadow: none; }
+
+/* ========= Main content ========= */
+main { padding: 1.5em 1em; margin: 1.5em 0; }
+main h1 { font-size: 2rem; color: #9ed034; margin-bottom: .5rem; }
+main h2 { font-size: 1.25rem; margin-bottom: .5rem; }
+
+/* White info cards like the screenshot */
+.info-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ========= Partners section ========= */
+section { width: 100%; background-color: #4288C3; }
+
+/* Circular badges for partner logos */
+.partner {
+  display: inline-block;
+  margin: 0 0.75em;
+  padding: 1.3em 1.5em;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.partner img { max-width: 90px; height: auto; display: inline-block; }
+
+/* ========= Footer ========= */
+footer { width: 100%; background-color: #ecfab8; }
+footer #nondisclaimer .copy { font-size: 0.9em; }
+
+footer #nondisclaimer .social .fa {
+  padding: 15px; font-size: 15px; width: 15px; text-align: center;
+  text-decoration: none; margin: 0 4px; border-radius: 50%;
+}
+footer #nondisclaimer .social .fa:hover { opacity: 0.7; }
+footer #nondisclaimer .social .fa-facebook { background: #3B5998; color: #fff; }
+footer #nondisclaimer .social .fa-twitter { background: #55ACEE; color: #fff; }
+footer #nondisclaimer .social .fa-instagram { background: #125688; color: #fff; }
+
+footer #disclaimer p { font-size: 0.85em; text-align: center; margin: 0; padding: 1rem 0; }
+
+/* ========= Utilities ========= */
+img { max-width: 100%; height: auto; }
+
+/* ========= Media Queries ========= */
+/* Phones */
+@media (max-width: 576px) {
+  main { padding: 1rem .75rem; margin: 1rem 0; }
+  .navbar-brand img { max-height: 44px; }
+  /* make the slab fit nicely on small screens */
+  .nav-slab { width: calc(100% - 2rem); margin: 0 auto; }
+}
+
+/* Tablets & down (<= 992px) */
+@media (max-width: 992px) {
+  .navbar-brand img { max-height: 44px; }
+}
+
+/* Optional failsafe (if you ever see the menu not collapsing at <1200px) */
+/*
+@media (max-width: 1199.98px){
+  .navbar .navbar-collapse { display: none !important; }
+  .navbar .navbar-toggler { display: inline-block; }
+}
+*/
