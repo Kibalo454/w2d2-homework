@@ -3,21 +3,22 @@ html, body { height: 100%; }
 img { max-width: 100%; height: auto; }
 
 /* ========= Hero (image on header per page) ========= */
-header.hero{
+header.hero {
   width: 100%;
   height: 300px;                  /* default hero height for most pages */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-/* page-specific hero images */
+
+/* Page-specific hero images */
 body#home header.hero       { background-image: url('images/cliff_ocean.jpg'); }
 body#cliffs header.hero     { background-image: url('images/forest_cliff.jpg'); }
-body#activities header.hero { background-image: url('images/runfly.jpg'); }
+body#activities header.hero {
+  background-image: url('images/runfly.jpg');
+  height: 220px; /* match mock exactly */
+}
 body#contact header.hero    { background-image: url('images/cliff_rock.jpg'); }
-
-/* Make the Activities banner shorter to match the mock */
-body#activities header.hero { height: 220px; }
 
 /* Optional: tweak heights by screen size */
 @media (max-width: 576px){
@@ -26,184 +27,657 @@ body#activities header.hero { height: 220px; }
 }
 
 /* ========= Navbar (sticky, dark, semi-transparent) ========= */
-.navbar.gc{
-  background: rgba(38,41,61,0.72);         /* translucent like the mock */
+.navbar.gc {
+  background: rgba(38, 41, 61, 0.72);
   box-shadow: 0 2px 12px rgba(0,0,0,.2);
 }
 .navbar.gc .navbar-brand,
-.navbar.gc .nav-link{
-  color:#fff !important;
+.navbar.gc .nav-link {
+  color: #fff !important;
 }
 
 /* Desktop (>=992px): subtle hover, green active tile */
-@media (min-width: 992px){
-  .navbar.gc .nav-link{
-    padding:.5rem .9rem;
-    border-radius:.125rem;
+@media (min-width: 992px) {
+  .navbar.gc .nav-link {
+    padding: .5rem .9rem;
+    border-radius: .125rem;
     text-transform: uppercase;
-    letter-spacing:.02em;
+    letter-spacing: .02em;
     background: rgba(255,255,255,.08);
     margin: 0 .25rem;
   }
   .navbar.gc .nav-link:hover,
-  .navbar.gc .nav-link:focus{
+  .navbar.gc .nav-link:focus {
     background: rgba(255,255,255,.15);
   }
-  .navbar.gc .nav-link.active{
-    background:#9ed034;                   /* green highlight */
-    color:#1b1b1b !important;
+  .navbar.gc .nav-link.active {
+    background: #9ed034;
+    color: #1b1b1b !important;
   }
 }
 
 /* Mobile / LG-and-down (<=991.98px): vertical tile menu */
-@media (max-width: 991.98px){
-  .navbar.gc .navbar-collapse{
+@media (max-width: 991.98px) {
+  .navbar.gc .navbar-collapse {
+    background: rgba(38, 41, 61, .85);
+    border-radius: 4px;
+    padding: .25rem 0;
+    margin-top: .5rem;
+  }
+  .navbar.gc .nav-link {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    background: transparent;
+    margin: 0;
+  }
+  .navbar.gc .nav-link:last-child { border-bottom: 0; }
+  .navbar.gc .nav-link.active {
+    background: #9ed034;
+    color: #1b1b1b !important;
+  }
+}
+
+/* Logo sizing */
+.navbar-brand img {
+  max-height: 56px;
+  height: auto;
+  width: auto;
+}
+
+/* ========= Main content ========= */
+main {
+  padding: 1.5em 1em;
+  margin: 1.5em 0;
+  background: transparent;
+}
+main h1 {
+  font-size: 2rem;
+  color: #9ed034;
+  margin-bottom: .5rem;
+}
+main h2 {
+  font-size: 1.25rem;
+  margin-bottom: .5rem;
+}
+
+/* ========= Info Box ========= */
+.info-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ========= Cliffs page headline & intro ========= */
+#cliffs .page-title {
+  text-align: center;
+  color: #9ed034;
+  font-size: 2rem;
+  margin: 1rem 0 1.25rem;
+}
+#cliffs .lead-intro {
+  max-width: 920px;
+  margin: 0 auto 2rem;
+  color: #333;
+}
+
+/* ========= Cliff cards with red bands ========= */
+.cliff-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.cliff-card .band {
+  background: #8e2d24;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .5rem .75rem;
+}
+.cliff-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ========= Activities page ========= */
+#activities .page-title {
+  text-align: center;
+  color: #9ed034;
+  margin: 1rem 0 1.25rem;
+}
+#activities .lead-intro {
+  max-width: 920px;
+  margin: 0 auto 1.75rem;
+  color: #333;
+}
+
+/* Activities table */
+.activities-table {
+  border: 1px solid #b9b9b9;
+}
+.activities-table caption {
+  caption-side: top;
+  background: #8e2d24;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .6rem .75rem;
+  text-align: center;
+}
+.activities-table thead th {
+  background: #6fa7e2;
+  color: #fff;
+  border-color: #b9b9b9;
+  text-align: center;
+  vertical-align: middle;
+}
+.activities-table td,
+.activities-table th {
+  border: 1px solid #b9b9b9;
+}
+.activities-table tbody td {
+  background: #eaf6d6;
+}
+.activities-table tbody td:first-child {
+  background: #d8e6ff;
+  font-weight: 600;
+}
+
+/* ========= Partners section ========= */
+section {
+  width: 100%;
+  background-color: #4288C3;
+}
+.partner {
+  display: inline-block;
+  margin: 0 .75em;
+  padding: 1.3em 1.5em;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.partner img {
+  display: block;
+  margin: 0 auto;
+  max-height: 60px;
+  height: auto;
+}
+
+/* ========= Footer ========= */
+footer {
+  width: 100%;
+  background-color: #ecfab8;
+}
+footer .copy {
+  font-size: .9em;
+}
+footer .social .fa {
+  padding: 15px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 4px;
+  border-radius: 50%;
+}
+footer .social .fa:hover { opacity: .7; }
+footer .fa-facebook { background: #3B5998; color: #fff; }
+footer .fa-twitter { background: #55ACEE; color: #fff; }
+footer .fa-instagram { background: #125688; color: #fff; }
+footer p {
+  font-size: .85em;
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+/* ========= Responsive Adjustments ========= */
+@media (max-width: 576px) {
+  main { padding: 1rem .75rem; margin: 1rem 0; }
+  .navbar-brand img { max-height: 44px; }
+}
+@media (max-width: 992px) {
+  .navbar-brand img { max-height: 44px; }
+}
+
+/* --- Contact Page Customizations --- */
+body#contact .page-title {
+  color: #9ed034;
+  text-align: left;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+body#contact .lead-intro {
+  color: #333;
+  max-width: 650px;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  font-size: 1rem;
+  padding-left: 0;
+}
+body#contact main {
+  margin-top: 2.2rem;
+  margin-bottom: 2rem;
+}
+body#contact .info-box.contact-box {
+  border: 1.5px solid #9ed034;
+  border-radius: 6px;
+  box-shadow: none;
+  background: #fff;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+}
+body#contact .form-control:focus {
+  border-color: #9ed034;
+  box-shadow: 0 0 3px #9ed03422;
+}
+body#contact .contact-send-btn {
+  background: #7db5fa !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.06rem;
+}
+body#contact h2 {
+  color: #4975d0;
+  text-align: left;
+  margin-bottom: 1.1rem;
+  margin-top: -0.7rem;
+  font-size: 1.14rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  body#contact .info-box.contact-box {
+    padding: 1.25rem 1rem;
+  }
+  body#contact .page-title,
+  body#contact .lead-intro {
+    padding-left: 0;
+  }
+}
+body {
+  background: #fff;
+}
+
+header.hero {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body#contact header.hero {
+  background-image: url('images/cliff_rock.jpg');
+}
+@media (max-width: 576px) {
+  header.hero { height: 190px; }
+}
+
+/* Contact page title & intro */
+#contact .page-title {
+  color: #8cc031;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  font-weight: 600;
+}
+#contact .lead-intro {
+  color: #222;
+  max-width: 600px;
+  margin: 0 auto 1.8rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* Center the contact box on large screens */
+.contact-box {
+  border: 1.5px solid #b8e237;
+  border-radius: 4px;
+  background: #fff;
+  padding: 1.8rem 2rem 1.3rem 2rem;
+  margin: 1.5rem 0 2.5rem 0;
+  box-shadow: 0 1px 12px rgba(60,100,40,0.03);
+}
+.contact-box .form-title {
+  font-size: 1.13rem;
+  color: #4975d0;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+.contact-box label {
+  color: #20272d;
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+.contact-box .form-control {
+  font-size: 0.99rem;
+  border-radius: 3px;
+}
+.captcha-box {
+  background: #f3f3f3;
+  border: 1px solid #bbb;
+  padding: .35rem .75rem;
+  font-size: 1.1em;
+  letter-spacing: .05em;
+  border-radius: 2px;
+  min-width: 88px;
+  display: inline-block;
+}
+.contact-box .btn-primary {
+  background: #7eb2ff;
+  border: none;
+  font-weight: 600;
+  letter-spacing: .04em;
+  border-radius: 2.5px;
+  transition: background 0.17s;
+}
+.contact-box .btn-primary:hover {
+  background: #4975d0;
+}
+
+/* Footer: keep your previous CSS */
+footer {
+  width: 100%;
+  background-color: #ecfab8;
+}
+footer .copy {
+  font-size: .9em;
+}
+footer .social .fa {
+  padding: 15px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 4px;
+  border-radius: 50%;
+}
+footer .social .fa:hover { opacity: .7; }
+footer .fa-facebook { background: #3B5998; color: #fff; }
+footer .fa-twitter { background: #55ACEE; color: #fff; }
+footer .fa-instagram { background: #125688; color: #fff; }
+footer p {
+  font-size: .85em;
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  .contact-box { padding: 1.2rem 0.9rem 1rem 0.9rem; }
+  #contact .page-title { font-size: 1.2rem; }
+}
+
+/* --- HERO IMAGE FOR ACTIVITIES PAGE --- */
+body#activities header.hero {
+  background-image: url('images/runfly.jpg');
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 576px){
+  body#activities header.hero { height: 190px; }
+}
+
+/* --- ACTIVITIES PAGE MAIN STYLES --- */
+#activities .page-title {
+  color: #8cc031;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  letter-spacing: 0.01em;
+}
+
+#activities .lead-intro {
+  color: #222;
+  max-width: 650px;
+  margin: 0 auto 1.8rem;
+  font-size: 1.12rem;
+  text-align: center;
+}
+
+.activities-table {
+  border: 1.5px solid #b9b9b9;
+  background: #fff;
+}
+.activities-table caption {
+  caption-side: top;
+  background: #8e2d24;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .6rem .75rem;
+  text-align: center;
+  font-size: 1.08em;
+}
+.activities-table thead th {
+  background: #6fa7e2;
+  color: #fff;
+  border-color: #b9b9b9;
+  text-align: center;
+  vertical-align: middle;
+}
+.activities-table th, .activities-table td {
+  border: 1px solid #b9b9b9;
+  vertical-align: middle;
+  text-align: center;
+}
+.activities-table tbody td {
+  background: #eaf6d6;
+}
+.activities-table tbody tr:nth-child(odd) td {
+  background: #f8fce8;
+}
+.activities-table tbody td:first-child {
+  background: #d8e6ff;
+  font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+  #activities .page-title { font-size: 1.28rem; }
+  #activities .lead-intro { font-size: .97rem; }
+  .activities-table caption { font-size: .96em; }
+}
+
+/* --- FOOTER SOCIAL ICONS --- */
+footer {
+  background-color: #ecfab8;
+  padding: 2rem 0 .5rem 0;
+  border-top: 1px solid #e2e2e2;
+  margin-top: 4rem;
+}
+footer .social .fa {
+  padding: 15px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 4px;
+  border-radius: 50%;
+}
+footer .social .fa:hover { opacity: .7; }
+footer .fa-facebook { background: #3B5998; color: #fff; }
+footer .fa-twitter { background: #55ACEE; color: #fff; }
+footer .fa-instagram { background: #125688; color: #fff; }
+footer p {
+  font-size: .85em;
+  text-align: center;
+  margin: 0 0 .6rem 0;
+  padding: 0;
+}
+ /* ========= Base ========= */
+html, body { height: 100%; }
+img { max-width: 100%; height: auto; }
+
+/* ========= Hero (image on header per page) ========= */
+header.hero {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body#activities header.hero {
+  background-image: url('images/runfly.jpg');
+}
+body#cliffs header.hero {
+  height: 300px;
+  background-image: url('images/forest_cliff.jpg');
+}
+body#home header.hero {
+  height: 300px;
+  background-image: url('images/cliff_ocean.jpg');
+}
+body#contact header.hero {
+  height: 300px;
+  background-image: url('images/cliff_rock.jpg');
+}
+
+/* Optional: tweak heights by screen size */
+@media (max-width: 576px){
+  header.hero { height: 190px !important; }
+}
+
+/* ========= Navbar ========= */
+.navbar.gc {
+  background: rgba(38,41,61,0.72);
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.navbar.gc .navbar-brand,
+.navbar.gc .nav-link {
+  color: #fff !important;
+}
+
+/* Desktop (>=992px): subtle hover, green active tile */
+@media (min-width: 992px) {
+  .navbar.gc .nav-link {
+    padding: .5rem .9rem;
+    border-radius: .125rem;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    background: rgba(255,255,255,.08);
+    margin: 0 .25rem;
+  }
+  .navbar.gc .nav-link:hover,
+  .navbar.gc .nav-link:focus {
+    background: rgba(255,255,255,.15);
+  }
+  .navbar.gc .nav-link.active {
+    background: #9ed034;
+    color: #1b1b1b !important;
+  }
+}
+
+/* Mobile / LG-and-down (<=991.98px): vertical tile menu */
+@media (max-width: 991.98px) {
+  .navbar.gc .navbar-collapse {
     background: rgba(38,41,61,.85);
     border-radius: 4px;
     padding: .25rem 0;
     margin-top: .5rem;
   }
-  .navbar.gc .nav-link{
-    display:block;
+  .navbar.gc .nav-link {
+    display: block;
     text-transform: uppercase;
-    letter-spacing:.02em;
-    padding: 1rem 1.25rem;                /* tall tiles */
-    border-bottom:1px solid rgba(255,255,255,.15);
+    letter-spacing: .02em;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,.15);
     background: transparent;
     margin: 0;
   }
-  .navbar.gc .nav-link:last-child{ border-bottom:0; }
-  .navbar.gc .nav-link.active{
-    background:#9ed034;
-    color:#1b1b1b !important;
+  .navbar.gc .nav-link:last-child { border-bottom: 0; }
+  .navbar.gc .nav-link.active {
+    background: #9ed034;
+    color: #1b1b1b !important;
   }
 }
 
 /* Logo sizing */
-.navbar-brand img{
-  max-height:56px;
-  height:auto;
-  width:auto;
+.navbar-brand img {
+  max-height: 56px;
+  height: auto;
+  width: auto;
 }
 
 /* ========= Main content ========= */
-main { padding: 1.5em 1em; margin: 1.5em 0; background: transparent; }
-main h1 { font-size: 2rem; color: #9ed034; margin-bottom:.5rem; }
-main h2 { font-size: 1.25rem; margin-bottom:.5rem; }
-
-/* White info cards (used elsewhere) */
-.info-box{
-  background:#fff;
-  border:1px solid #ddd;
-  padding:1.25rem 1.5rem;
+main {
+  padding: 1.5em 1em;
+  margin: 1.5em 0;
+  background: transparent;
+}
+main h1.page-title {
+  font-size: 2rem;
+  color: #9ed034;
+  margin-bottom: .5rem;
+}
+main .lead-intro {
+  max-width: 820px;
+  margin: 0 auto 2rem;
+  color: #333;
+  font-size: 1.1rem;
 }
 
-/* ========= Cliffs page headline & intro ========= */
-#cliffs .page-title{
-  text-align:center;
-  color:#9ed034;
-  font-size:2rem;
-  margin:1rem 0 1.25rem;
+/* ========= Table Theme ========= */
+.activities-table {
+  border: 1px solid #b9b9b9;
 }
-#cliffs .lead-intro{
-  max-width:920px;
-  margin:0 auto 2rem;
-  color:#333;
-}
-
-/* ========= Cliff cards with red bands ========= */
-.cliff-card{
-  background:#fff;
-  border:1px solid #ddd;
-  overflow:hidden;
-  box-shadow:0 1px 4px rgba(0,0,0,.06);
-}
-.cliff-card .band{
-  background:#8e2d24;       /* deep red band like the screenshot */
-  color:#fff;
-  font-weight:600;
-  letter-spacing:.02em;
-  padding:.5rem .75rem;
-}
-.cliff-card img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-/* ========= Activities page: title, intro, table theme ========= */
-#activities .page-title{
-  text-align:center;
-  color:#9ed034;
-  margin: 1rem 0 1.25rem;
-}
-#activities .lead-intro{
-  max-width:920px;
-  margin:0 auto 1.75rem;
-  color:#333;
-}
-
-/* table styling to match the mock */
-.activities-table { border:1px solid #b9b9b9; }
-.activities-table caption{
+.activities-table caption {
   caption-side: top;
-  background:#8e2d24; color:#fff;
-  font-weight:600; letter-spacing:.02em;
-  padding:.6rem .75rem; text-align:center;
+  background: #8e2d24;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .6rem .75rem;
+  text-align: center;
 }
-.activities-table thead th{
-  background:#6fa7e2; color:#fff; border-color:#b9b9b9;
-  text-align:center; vertical-align:middle;
+.activities-table thead th {
+  background: #6fa7e2;
+  color: #fff;
+  border-color: #b9b9b9;
+  text-align: center;
+  vertical-align: middle;
 }
-.activities-table td, .activities-table th{ border:1px solid #b9b9b9; }
-.activities-table tbody td{ background:#eaf6d6; }
-.activities-table tbody td:first-child{ background:#d8e6ff; font-weight:600; }
-
-/* ========= Partners section ========= */
-section{ width:100%; background-color:#4288C3; }
-
-/* Circular partner logos */
-.partner{
-  display:inline-block;
-  margin:0 .75em;
-  padding:1.3em 1.5em;
-  background-color:#fff;
-  border-radius:50%;
+.activities-table td,
+.activities-table th {
+  border: 1px solid #b9b9b9;
 }
-.partner img{
-  display:block;
-  margin:0 auto;
-  max-height:60px;
-  height:auto;
+.activities-table tbody td {
+  background: #eaf6d6;
+}
+.activities-table tbody td:first-child {
+  background: #f5f7fd;
 }
 
 /* ========= Footer ========= */
-footer{ width:100%; background-color:#ecfab8; }
-footer .copy{ font-size:.9em; }
-
-footer .social .fa{
-  padding:15px;
-  font-size:15px;
-  width:15px;
-  text-align:center;
-  text-decoration:none;
-  margin:0 4px;
-  border-radius:50%;
+footer {
+  width: 100%;
+  background-color: #ecfab8;
 }
-footer .social .fa:hover{ opacity:.7; }
-footer .fa-facebook{ background:#3B5998; color:#fff; }
-footer .fa-twitter{ background:#55ACEE; color:#fff; }
-footer .fa-instagram{ background:#125688; color:#fff; }
-
-footer p{ font-size:.85em; text-align:center; margin:0; padding:1rem 0; }
-
-/* ========= Media Queries ========= */
-/* Phones */
-@media (max-width: 576px){
-  main { padding: 1rem .75rem; margin: 1rem 0; }
-  .navbar-brand img { max-height: 44px; }
+footer .copy {
+  font-size: .9em;
 }
-/* Tablets & down (<= 992px) */
-@media (max-width: 992px){
-  .navbar-brand img { max-height: 44px; }
+footer .social .fa {
+  padding: 15px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 4px;
+  border-radius: 50%;
+}
+footer .social .fa:hover { opacity: .7; }
+footer .fa-facebook { background: #3B5998; color: #fff; }
+footer .fa-twitter { background: #55ACEE; color: #fff; }
+footer .fa-instagram { background: #125688; color: #fff; }
+footer p {
+  font-size: .85em;
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
 }

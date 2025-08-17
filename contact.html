@@ -2,75 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Great Cliffs of California — Contact</title>
+  <title>Contact | Great Cliffs of California</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <!-- Bootstrap 4.5.2 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Font Awesome 4.7 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Site CSS -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Page-specific tweaks -->
-  <style>
-    body#contact header.hero {
-      background-image: url('images/cliff_rock.jpg');
-      height: 220px;
-      background-position: center;
-    }
-
-    body#contact main {
-      margin-top: .75rem;
-    }
-
-    #contact .page-title {
-      text-align: center;
-      color: #9ed034;
-      margin: 1rem 0 1.25rem;
-    }
-
-    #contact .lead-intro {
-      max-width: 920px;
-      margin: 0 auto 1.75rem;
-      color: #333;
-    }
-
-    .contact-box {
-      border: 2px solid #9ed034;
-      border-radius: 4px;
-      background: #fff;
-    }
-
-    .contact-box .box-title {
-      background: #e7f0ff;
-      color: #2563eb;
-      font-weight: 700;
-      letter-spacing: .02em;
-      padding: .6rem .9rem;
-      border-bottom: 1px solid #cfe0ff;
-    }
-
-    .contact-box .box-body {
-      padding: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body id="contact">
-  <!-- Sticky top navbar -->
+  <!-- Hero image -->
+  <header class="hero"></header>
+
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark gc sticky-top" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand" href="index.html" aria-label="Great Cliffs Home">
         <img src="images/logo.png" alt="Great Cliffs of California logo" class="img-fluid" style="height:40px">
       </a>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gcNav"
               aria-controls="gcNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse mt-2 mt-lg-0" id="gcNav">
+      <div id="gcNav" class="collapse navbar-collapse mt-2 mt-lg-0">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="cliffs.html">Cliffs</a></li>
@@ -81,111 +36,80 @@
     </div>
   </nav>
 
-  <!-- Header image -->
-  <header class="hero"></header>
-
-  <main class="py-4">
-    <div class="container">
-      <h1 class="page-title">Contacting Us</h1>
-
-      <div class="lead-intro">
-        If you need more information about the Cliffs, Hours of Operation, Facilities or questions about this site,
-        please contact us by using one of the following:
-      </div>
-
-      <!-- Contact Info -->
-      <div class="row justify-content-center mb-4">
-        <div class="col-12 col-lg-8">
-          <h2 class="h5">Phone</h2>
-          <p class="mb-3">(800)GCLIFFS</p>
-
-          <h2 class="h5">Email</h2>
-          <p class="mb-0">info@greatcliffs.com</p>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-          <div class="contact-box">
-            <div class="box-title">CONTACT FORM</div>
-            <div class="box-body">
-              <form novalidate>
-                <div class="form-group">
-                  <label for="name">Name:</label>
-                  <input id="name" type="text" class="form-control" placeholder="Your full name" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input id="email" type="email" class="form-control" placeholder="you@example.com" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">Phone:</label>
-                  <input id="phone" type="tel" class="form-control" placeholder="(555) 123-4567">
-                </div>
-
-                <div class="form-group">
-                  <label for="message">Message:</label>
-                  <textarea id="message" class="form-control" rows="5" placeholder="How can we help?" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">
-                  <i class="fa fa-paper-plane"></i> Send Message
-                </button>
-              </form>
+  <main class="container py-4">
+    <h1 class="page-title">Contacting Us</h1>
+    <p class="lead-intro mb-4">
+      If you need more information about the Cliffs, Hours of Operation, or to book an event, feel free to use the form below:
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <div class="contact-box">
+          <h2 class="form-title mb-3">Contact Form</h2>
+          <form autocomplete="off">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" autocomplete="off">
             </div>
-          </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="text" class="form-control" id="phone" name="phone" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="cliff">Which Cliff are you inquiring?</label>
+              <input type="text" class="form-control" id="cliff" name="cliff" value="West Cliff">
+            </div>
+            <div class="form-group mb-1">
+              <label>How should we contact you?</label><br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="contactMethod" id="contactEmail" value="Email">
+                <label class="form-check-label" for="contactEmail">Email</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="contactMethod" id="contactPhone" value="Phone">
+                <label class="form-check-label" for="contactPhone">Phone</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="hear">How did you hear about us:</label>
+              <textarea class="form-control" id="hear" name="hear" rows="2"></textarea>
+            </div>
+            <div class="form-row align-items-center">
+              <div class="col-auto">
+                <label for="captcha" class="mb-0">Enter characters</label>
+                <input type="text" class="form-control form-control-sm" id="captcha" name="captcha" style="min-width:110px;">
+              </div>
+              <div class="col-auto">
+                <div class="captcha-box">EKVqC1Zk</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-3">SEND</button>
+          </form>
         </div>
       </div>
-
-      <!-- Partners -->
-      <section class="py-5">
-        <div class="row text-center align-items-center">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-bustour.png" class="img-fluid" alt="Partner: Bus Tours">
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-cabinrental.png" class="img-fluid" alt="Partner: Cabin Rental">
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-campingadv.png" class="img-fluid" alt="Partner: Camping Adventure">
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-collegetours.png" class="img-fluid" alt="Partner: College Tours">
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-rentalbike.png" class="img-fluid" alt="Partner: Bike Rentals">
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-4">
-            <img src="images/partners/partner-tourgroup.png" class="img-fluid" alt="Partner: Tour Group">
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
   <footer class="bg-light">
     <div class="container">
-      <div id="nondisclaimer" class="d-flex flex-column flex-md-row justify-content-between align-items-center py-3">
-        <div class="copy text-center text-md-left">&copy; Copyright 2021 :: GreatCliffs.com</div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-3">
+        <div class="copy">&copy; 2025 Great Cliffs of California</div>
         <div class="social mt-3 mt-md-0">
           <a href="#" class="fa fa-facebook mr-2" aria-label="Facebook"></a>
           <a href="#" class="fa fa-instagram mr-2" aria-label="Instagram"></a>
           <a href="#" class="fa fa-twitter" aria-label="Twitter"></a>
         </div>
       </div>
-      <div id="disclaimer" class="py-3 border-top">
-        <p class="mb-0 small text-muted">
-          This website is designed and created solely for educational purposes only at Westcliff University.
-          All contents are not intended for any commercial gain or use.
-        </p>
+      <div class="py-3 border-top">
+        <p class="mb-0 small text-muted">This site is for educational purposes at Westcliff University.</p>
       </div>
     </div>
   </footer>
 
-  <!-- JS scripts -->
+  <!-- JS: jQuery, Popper, Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
