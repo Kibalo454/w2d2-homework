@@ -1,118 +1,209 @@
 /* ========= Base ========= */
 html, body { height: 100%; }
+img { max-width: 100%; height: auto; }
 
-/* ========= Hero ========= */
-.hero {
+/* ========= Hero (image on header per page) ========= */
+header.hero{
   width: 100%;
-  min-height: 400px;
-  background: lightgrey url(images/cliff_ocean.jpg) no-repeat center center;
+  height: 300px;                  /* default hero height for most pages */
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* page-specific hero images */
+body#home header.hero       { background-image: url('images/cliff_ocean.jpg'); }
+body#cliffs header.hero     { background-image: url('images/forest_cliff.jpg'); }
+body#activities header.hero { background-image: url('images/runfly.jpg'); }
+body#contact header.hero    { background-image: url('images/cliff_rock.jpg'); }
+
+/* Make the Activities banner shorter to match the mock */
+body#activities header.hero { height: 220px; }
+
+/* Optional: tweak heights by screen size */
+@media (max-width: 576px){
+  header.hero { height: 240px; }
+  body#activities header.hero { height: 190px; }
 }
 
-/* ========= Overlay Navbar (screenshot look) ========= */
-.nav-over-hero {
-  position: absolute;
-  top: 24px;           /* pushes slab down a bit into the hero */
-  left: 0;
-  right: 0;
-  background: transparent;
-  z-index: 20;
+/* ========= Navbar (sticky, dark, semi-transparent) ========= */
+.navbar.gc{
+  background: rgba(38,41,61,0.72);         /* translucent like the mock */
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
 }
-.nav-slab {
-  background: rgba(255,255,255,.9);
-  border-radius: 4px;
-  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+.navbar.gc .navbar-brand,
+.navbar.gc .nav-link{
+  color:#fff !important;
+}
+
+/* Desktop (>=992px): subtle hover, green active tile */
+@media (min-width: 992px){
+  .navbar.gc .nav-link{
+    padding:.5rem .9rem;
+    border-radius:.125rem;
+    text-transform: uppercase;
+    letter-spacing:.02em;
+    background: rgba(255,255,255,.08);
+    margin: 0 .25rem;
+  }
+  .navbar.gc .nav-link:hover,
+  .navbar.gc .nav-link:focus{
+    background: rgba(255,255,255,.15);
+  }
+  .navbar.gc .nav-link.active{
+    background:#9ed034;                   /* green highlight */
+    color:#1b1b1b !important;
+  }
+}
+
+/* Mobile / LG-and-down (<=991.98px): vertical tile menu */
+@media (max-width: 991.98px){
+  .navbar.gc .navbar-collapse{
+    background: rgba(38,41,61,.85);
+    border-radius: 4px;
+    padding: .25rem 0;
+    margin-top: .5rem;
+  }
+  .navbar.gc .nav-link{
+    display:block;
+    text-transform: uppercase;
+    letter-spacing:.02em;
+    padding: 1rem 1.25rem;                /* tall tiles */
+    border-bottom:1px solid rgba(255,255,255,.15);
+    background: transparent;
+    margin: 0;
+  }
+  .navbar.gc .nav-link:last-child{ border-bottom:0; }
+  .navbar.gc .nav-link.active{
+    background:#9ed034;
+    color:#1b1b1b !important;
+  }
 }
 
 /* Logo sizing */
-.navbar-brand img {
-  max-height: 56px;
-  height: auto;
-  width: auto;
+.navbar-brand img{
+  max-height:56px;
+  height:auto;
+  width:auto;
 }
-
-/* Tab-style nav links and active state (green) */
-.nav-tab {
-  background: #f2f2f2;
-  color: #666;
-  text-transform: uppercase;
-  font-size: .85rem;
-  letter-spacing: .02em;
-  border-radius: 2px;
-  padding: .5rem .9rem;
-  margin-left: .5rem;
-}
-.nav-item.active .nav-tab,
-.nav-tab:hover {
-  background: #9ed034;
-  color: #fff;
-}
-
-/* Toggler tweaks */
-.navbar-light .navbar-toggler { border-color: rgba(0,0,0,.1); }
-.navbar-toggler:focus { outline: none; box-shadow: none; }
 
 /* ========= Main content ========= */
-main { padding: 1.5em 1em; margin: 1.5em 0; }
-main h1 { font-size: 2rem; color: #9ed034; margin-bottom: .5rem; }
-main h2 { font-size: 1.25rem; margin-bottom: .5rem; }
+main { padding: 1.5em 1em; margin: 1.5em 0; background: transparent; }
+main h1 { font-size: 2rem; color: #9ed034; margin-bottom:.5rem; }
+main h2 { font-size: 1.25rem; margin-bottom:.5rem; }
 
-/* White info cards like the screenshot */
-.info-box {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 1.25rem 1.5rem;
+/* White info cards (used elsewhere) */
+.info-box{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:1.25rem 1.5rem;
 }
+
+/* ========= Cliffs page headline & intro ========= */
+#cliffs .page-title{
+  text-align:center;
+  color:#9ed034;
+  font-size:2rem;
+  margin:1rem 0 1.25rem;
+}
+#cliffs .lead-intro{
+  max-width:920px;
+  margin:0 auto 2rem;
+  color:#333;
+}
+
+/* ========= Cliff cards with red bands ========= */
+.cliff-card{
+  background:#fff;
+  border:1px solid #ddd;
+  overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.cliff-card .band{
+  background:#8e2d24;       /* deep red band like the screenshot */
+  color:#fff;
+  font-weight:600;
+  letter-spacing:.02em;
+  padding:.5rem .75rem;
+}
+.cliff-card img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* ========= Activities page: title, intro, table theme ========= */
+#activities .page-title{
+  text-align:center;
+  color:#9ed034;
+  margin: 1rem 0 1.25rem;
+}
+#activities .lead-intro{
+  max-width:920px;
+  margin:0 auto 1.75rem;
+  color:#333;
+}
+
+/* table styling to match the mock */
+.activities-table { border:1px solid #b9b9b9; }
+.activities-table caption{
+  caption-side: top;
+  background:#8e2d24; color:#fff;
+  font-weight:600; letter-spacing:.02em;
+  padding:.6rem .75rem; text-align:center;
+}
+.activities-table thead th{
+  background:#6fa7e2; color:#fff; border-color:#b9b9b9;
+  text-align:center; vertical-align:middle;
+}
+.activities-table td, .activities-table th{ border:1px solid #b9b9b9; }
+.activities-table tbody td{ background:#eaf6d6; }
+.activities-table tbody td:first-child{ background:#d8e6ff; font-weight:600; }
 
 /* ========= Partners section ========= */
-section { width: 100%; background-color: #4288C3; }
+section{ width:100%; background-color:#4288C3; }
 
-/* Circular badges for partner logos */
-.partner {
-  display: inline-block;
-  margin: 0 0.75em;
-  padding: 1.3em 1.5em;
-  background-color: #fff;
-  border-radius: 50%;
+/* Circular partner logos */
+.partner{
+  display:inline-block;
+  margin:0 .75em;
+  padding:1.3em 1.5em;
+  background-color:#fff;
+  border-radius:50%;
 }
-.partner img { max-width: 90px; height: auto; display: inline-block; }
+.partner img{
+  display:block;
+  margin:0 auto;
+  max-height:60px;
+  height:auto;
+}
 
 /* ========= Footer ========= */
-footer { width: 100%; background-color: #ecfab8; }
-footer #nondisclaimer .copy { font-size: 0.9em; }
+footer{ width:100%; background-color:#ecfab8; }
+footer .copy{ font-size:.9em; }
 
-footer #nondisclaimer .social .fa {
-  padding: 15px; font-size: 15px; width: 15px; text-align: center;
-  text-decoration: none; margin: 0 4px; border-radius: 50%;
+footer .social .fa{
+  padding:15px;
+  font-size:15px;
+  width:15px;
+  text-align:center;
+  text-decoration:none;
+  margin:0 4px;
+  border-radius:50%;
 }
-footer #nondisclaimer .social .fa:hover { opacity: 0.7; }
-footer #nondisclaimer .social .fa-facebook { background: #3B5998; color: #fff; }
-footer #nondisclaimer .social .fa-twitter { background: #55ACEE; color: #fff; }
-footer #nondisclaimer .social .fa-instagram { background: #125688; color: #fff; }
+footer .social .fa:hover{ opacity:.7; }
+footer .fa-facebook{ background:#3B5998; color:#fff; }
+footer .fa-twitter{ background:#55ACEE; color:#fff; }
+footer .fa-instagram{ background:#125688; color:#fff; }
 
-footer #disclaimer p { font-size: 0.85em; text-align: center; margin: 0; padding: 1rem 0; }
-
-/* ========= Utilities ========= */
-img { max-width: 100%; height: auto; }
+footer p{ font-size:.85em; text-align:center; margin:0; padding:1rem 0; }
 
 /* ========= Media Queries ========= */
 /* Phones */
-@media (max-width: 576px) {
+@media (max-width: 576px){
   main { padding: 1rem .75rem; margin: 1rem 0; }
   .navbar-brand img { max-height: 44px; }
-  /* make the slab fit nicely on small screens */
-  .nav-slab { width: calc(100% - 2rem); margin: 0 auto; }
 }
-
 /* Tablets & down (<= 992px) */
-@media (max-width: 992px) {
+@media (max-width: 992px){
   .navbar-brand img { max-height: 44px; }
 }
-
-/* Optional failsafe (if you ever see the menu not collapsing at <1200px) */
-/*
-@media (max-width: 1199.98px){
-  .navbar .navbar-collapse { display: none !important; }
-  .navbar .navbar-toggler { display: inline-block; }
-}
-*/
